@@ -2,8 +2,8 @@ import { defineDb, defineTable, column, NOW } from 'astro:db'
 
 const User = defineTable({
   columns: {
-    _id: column.text(),
-    username: column.text({ primaryKey: true }),
+    _id: column.text({ primaryKey: true }),
+    username: column.text(),
     password: column.text(),
     email: column.text(),
     role: column.text({ default: 'user' }),
@@ -15,7 +15,7 @@ const User = defineTable({
 
 const Post = defineTable({
   columns: {
-    _id: column.text(),
+    _id: column.text({ primaryKey: true }),
     title: column.text(),
     content: column.text(),
     author: column.text({ references: () => User.columns._id }),
@@ -27,7 +27,7 @@ const Post = defineTable({
 
 const Contact = defineTable({
   columns: {
-    _id: column.text(),
+    _id: column.text({ primaryKey: true }),
     name: column.text(),
     email: column.text(),
     message: column.text(),
