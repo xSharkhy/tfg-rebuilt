@@ -1,0 +1,19 @@
+---
+import { db, User } from "astro:db"
+
+const users = await db.select().from(User)
+---
+
+<h1>Users</h1>
+
+<ul>
+  {
+    users.map((user) => (
+      <li>
+        {user._id}
+        {user.role}
+        {user.username}
+      </li>
+    ))
+  }
+</ul>
